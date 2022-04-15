@@ -4,6 +4,8 @@ class PropertiesController < ApplicationController
   
   def show
     @property = Property.find(params[:id])
+    @log = @property.logs.build
+    @pagy, @logs = pagy(@property.logs.order(id: :desc))
   end
 
   def new

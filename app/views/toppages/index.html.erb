@@ -22,16 +22,19 @@
     </table>
     <%== pagy_bootstrap_nav(@pagy) %>
   <% else %>
-    <div class="text-center m-5">
-      まだ物件が登録されていません！<br>
-      <%= link_to '物件新規登録', new_property_path, class: 'btn btn-success' %>
+    <div class="card">
+      <div class="card-header text-center pt-3"><h5>まだ物件が登録されていません</h5></div>
+      <div class="text-center m-3">
+        <p>まずは物件情報を登録しましょう！</p>
+        <%= link_to '新規物件登録', new_property_path, class: 'btn btn-success' %>
+      </div>
     </div>
   <% end %>
 <% else %>
 <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
   <div class="text-center text-white">
-    <h1>Welcome to the すまいログ</h1>
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-log btn-primary' %>
+    <h2>住まいログへようこそ！</h2>
+    <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-log btn-primary' %>
   </div>
 </div>
 <% end %>

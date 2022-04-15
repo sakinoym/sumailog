@@ -6,4 +6,6 @@ class Property < ApplicationRecord
                     format: { with: /\A[0-9０-９]+\z/ }
   validates :address, presence:true, length: { maximum: 50 }
   validates :company, length: { maximum: 50 }
+  
+  has_many :logs
 end
