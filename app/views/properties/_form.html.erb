@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(model: property) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="mb-3">
+      <%= f.label :name, '物件名' %>
+      <%= f.text_field :name, required: true, class: 'form-control' %>
+      </div>
+      
+      <div class="mb-3">
+        <%= f.label :price, '価格' %>
+        <div class="input-group">
+        <%= f.text_field :price, required: true, class: 'form-control', placeholder: '半角数字で入力' %>
+        <span class="input-group-text">万円</span>
+        </div>
+      </div>
+      
+      <div class="mb-3">  
+        <%= f.label :address, '住所' %>
+        <%= f.text_field :address, required: true, class: 'form-control' %>
+      </div>
+      
+      <div class="mb-3">  
+        <%= f.label :company, '担当不動産会社' %>
+        <%= f.text_field :company, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit '登録', class: 'btn btn-success w-100' %>
+    <% end %>
+  </div>
+</div>
