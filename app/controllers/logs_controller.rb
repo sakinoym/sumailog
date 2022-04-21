@@ -13,10 +13,18 @@ class LogsController < ApplicationController
       render 'properties/show'
     end
   end
+  
+  def destroy
+    @log = Log.find(params[:id])
+    @log.destroy
+    flash[:success] = 'メッセージを削除しました。'
+    redirect_back(fallback_location: root_path)
+  end
 
   private
 
   def log_params
     params.require(:log).permit(:content)
   end
+  
 end

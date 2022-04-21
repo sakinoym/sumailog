@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   
   resources :properties, only: [:show, :new, :create, :edit, :update, :destroy]
   
-  resources :logs, only: [:create]
+  resources :logs, only: [:create, :destroy]
 end

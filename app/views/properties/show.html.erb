@@ -35,6 +35,11 @@
           <div>
             <p><%= log.content %></p>
           </div>
+          <div>
+            <% if current_user == @property.user %>
+              <%= link_to "削除", log_path(log), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>
