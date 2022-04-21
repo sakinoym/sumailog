@@ -1,9 +1,8 @@
 class PropertiesController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :update]
+  before_action :correct_user, only: [:show, :destroy, :update]
   
   def show
-    @property = Property.find(params[:id])
     @log = @property.logs.build
     @pagy, @logs = pagy(@property.logs.order(id: :desc))
   end

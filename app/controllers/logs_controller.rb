@@ -15,7 +15,7 @@ class LogsController < ApplicationController
   end
   
   def destroy
-    @log = Log.find(params[:id])
+    @log = Log.find_by(id: params[:id])
     @log.destroy
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
