@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:show, :destroy, :update]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def show
     @log = @property.logs.build
@@ -23,7 +23,6 @@ class PropertiesController < ApplicationController
   end
 
   def edit
-    @property = Property.find(params[:id])
   end
 
   def update
