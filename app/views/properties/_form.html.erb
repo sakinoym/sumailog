@@ -26,6 +26,16 @@
         <%= f.text_field :company, class: 'form-control' %>
       </div>
       
+      <div class="mb-3">  
+        <%= f.label :company_contact_info, '担当不動産会社連絡先' %>
+        <%= f.text_field :company_contact_info, class: 'form-control' %>
+      </div>
+      
+      <div class="mb-3">  
+        <%= f.label :property_url, '物件情報が掲載されているページのURL' %>
+        <%= f.url_field :property_url, class: 'form-control' %>
+      </div>
+      
       <%= f.submit '登録', class: 'btn btn-success w-100' %>
     <% end %>
   </div>
