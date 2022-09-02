@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :properties 
+  has_one :condition
 end

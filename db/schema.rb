@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_082958) do
+ActiveRecord::Schema.define(version: 2022_08_30_091430) do
+
+  create_table "conditions", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "budget"
+    t.string "area"
+    t.string "walking_distans_from_station"
+    t.string "exclusive_area"
+    t.string "floor_plan"
+    t.string "age_of_a_building"
+    t.string "detail_1"
+    t.text "others"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "detail_2"
+    t.string "detail_3"
+    t.index ["user_id"], name: "index_conditions_on_user_id"
+  end
 
   create_table "logs", charset: "utf8mb4", force: :cascade do |t|
     t.string "content"
@@ -41,6 +58,7 @@ ActiveRecord::Schema.define(version: 2022_07_29_082958) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "conditions", "users"
   add_foreign_key "logs", "properties"
   add_foreign_key "properties", "users"
 end

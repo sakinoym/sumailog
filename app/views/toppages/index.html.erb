@@ -1,5 +1,39 @@
 <% if logged_in? %>
   <% if @properties.any? %>
+    <% if @condition.present? %>
+      <div class="card mb-3">
+        <div class="card-header text-center">希望条件</div>
+        <div class="card-body">
+          <p class="card-text">
+            <%= @condition.budget.to_s(:delimited) %>万円以内 ／
+            <%= @condition.area %> ／
+            駅から<%= @condition.walking_distans_from_station %> ／
+            <%= @condition.exclusive_area %> ／
+            <%= @condition.floor_plan %> ／
+            <%= @condition.age_of_a_building %> ／
+            <% if @condition.detail_1 == 'true' %>
+              <%= "ペット飼育相談" %> ／
+            <% end %>
+            <% if @condition.detail_2 == 'true' %>
+              <%= "2階以上" %> ／
+            <% end %>
+            <% if @condition.detail_3 == 'true' %>
+              <%= "リフォーム・リノベーション済み" %> ／
+            <% end %>
+            <%= @condition.others %>
+          </p>
+          <div class="text-center"><%= link_to '編集', edit_condition_path(@condition), class: 'btn btn-success' %></div>
+        </div>
+      </div>
+    <% else %>
+      <div class="card mb-3">
+        <div class="card-header text-center">希望条件</div>
+        <div class="card-body text-center">
+          <p class="card-text">まだ登録されていません！</p>
+          <div><%= link_to '希望条件の登録', new_condition_path, class: 'btn btn-success' %></div>
+        </div>
+      </div>
+    <% end %>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -24,9 +58,17 @@
   <% else %>
     <div class="card">
       <div class="card-header text-center pt-3"><h5>まだ物件が登録されていません</h5></div>
-      <div class="text-center m-3">
-        <p>まずは物件情報を登録しましょう！</p>
-        <%= link_to '新規物件登録', new_property_path, class: 'btn btn-success' %>
+      <div class="card-body">
+        <h5 class="card-title mb-4">まずは候補の物件を登録してみましょう</h5>
+        <p class="card-text">
+          物件を登録するとこんなことができます
+          <ul>
+            <li>担当の不動産会社や連絡先、掲載されているサイトのURLを登録</li>
+            <li>物件の問い合わせ状況や、内見記録など活動ログを登録</li>
+            <li>住まい探しにまつわる情報を住まいログで一元管理！</li>
+          </ul>
+        </p>
+        <div class="text-center"><%= link_to '新規物件登録', new_property_path, class: 'btn btn-success' %></div>
       </div>
     </div>
   <% end %>

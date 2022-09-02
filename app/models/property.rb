@@ -6,7 +6,7 @@ class Property < ApplicationRecord
   validates :address, presence:true, length: { maximum: 50 }
   validates :company, length: { maximum: 50 }
   validates :company_contact_info, length: { maximum: 50 }
-  validates :property_url, format: /\A#{URI::regexp(%w(http https))}\z/
+  validates :property_url, allow_blank: true, format: { with: /\A#{URI::regexp(%w(http https))}\z/ }
   
   has_many :logs, dependent: :destroy
 end
