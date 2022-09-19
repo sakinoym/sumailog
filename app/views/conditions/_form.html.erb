@@ -138,18 +138,33 @@
       
       <div class="mb-3">
           <div class="mb-1">こだわり</div>
-          <div class="form-check form-check-inline">
-            <%= f.check_box :detail_1, {class: "form-check-input", checked: condition.detail_1.include?('true')}, "true", "false" %>
-            <%= f.label :detail_1, 'ペット飼育相談', {class: "form-check-label"} %>
-          </div>
-          <div class="form-check form-check-inline">
-            <%= f.check_box :detail_2, {class: "form-check-input", checked: condition.detail_2.include?('true')}, "true", "false" %>
-            <%= f.label :detail_2, '2階以上', {class: "form-check-label"} %>
-          </div>
-          <div class="form-check form-check-inline">
-            <%= f.check_box :detail_3, {class: "form-check-input", checked: condition.detail_3.include?('true')}, "true", "false" %>
-            <%= f.label :detail_3, 'リフォーム・リノベーション済み', {class: "form-check-label"} %>
-          </div>
+          <% if @condition.detail_1.present? %>
+            <div class="form-check form-check-inline">
+              <%= f.check_box :detail_1, {class: "form-check-input", checked: condition.detail_1.include?('true')}, "true", "false" %>
+              <%= f.label :detail_1, 'ペット飼育相談', {class: "form-check-label"} %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.check_box :detail_2, {class: "form-check-input", checked: condition.detail_2.include?('true')}, "true", "false" %>
+              <%= f.label :detail_2, '2階以上', {class: "form-check-label"} %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.check_box :detail_3, {class: "form-check-input", checked: condition.detail_3.include?('true')}, "true", "false" %>
+              <%= f.label :detail_3, 'リフォーム・リノベーション済み', {class: "form-check-label"} %>
+            </div>
+          <% else %>
+            <div class="form-check form-check-inline">
+              <%= f.check_box :detail_1, {class: "form-check-input"}, "true", "false" %>
+              <%= f.label :detail_1, 'ペット飼育相談', {class: "form-check-label"} %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.check_box :detail_2, {class: "form-check-input"}, "true", "false" %>
+              <%= f.label :detail_2, '2階以上', {class: "form-check-label"} %>
+            </div>
+            <div class="form-check form-check-inline">
+              <%= f.check_box :detail_3, {class: "form-check-input"}, "true", "false" %>
+              <%= f.label :detail_3, 'リフォーム・リノベーション済み', {class: "form-check-label"} %>
+            </div>
+          <% end %>
       </div>
       
       <div class="mb-3">  

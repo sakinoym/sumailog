@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <% if @properties.any? %>
     <% if @condition.present? %>
-      <div class="card mb-3">
+      <div class="card mb-3 col-sm-10 offset-sm-1">
         <div class="card-header text-center">希望条件</div>
         <div class="card-body">
           <p class="card-text">
@@ -26,7 +26,7 @@
         </div>
       </div>
     <% else %>
-      <div class="card mb-3">
+      <div class="card mb-3 col-sm-10 offset-sm-1">
         <div class="card-header text-center">希望条件</div>
         <div class="card-body text-center">
           <p class="card-text">まだ登録されていません！</p>
@@ -34,49 +34,71 @@
         </div>
       </div>
     <% end %>
+    <div class="col-sm-10 offset-sm-1">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="text-center">No.</th>
           <th>物件名</th>
           <th>価格</th>
           <th>住所</th>
+          <th>URL</th>
         </tr>
       </thead>
       <tbody>
         <% @properties.each do |property| %>
           <tr>
-            <td class="text-center"><%= property.id %></td>
             <td><%= link_to property.name, property %></td>
             <td><%= property.price.to_s(:delimited) %>万円</td>
             <td><%= property.address %></td>
+            <td><%= link_to property.property_url, property.property_url %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
   <% else %>
-    <div class="card">
-      <div class="card-header text-center pt-3"><h5>まだ物件が登録されていません</h5></div>
-      <div class="card-body">
-        <h5 class="card-title mb-4">まずは候補の物件を登録してみましょう</h5>
-        <p class="card-text">
-          物件を登録するとこんなことができます
-          <ul>
-            <li>担当の不動産会社や連絡先、掲載されているサイトのURLを登録</li>
-            <li>物件の問い合わせ状況や、内見記録など活動ログを登録</li>
-            <li>住まい探しにまつわる情報を住まいログで一元管理！</li>
-          </ul>
-        </p>
-        <div class="text-center"><%= link_to '新規物件登録', new_property_path, class: 'btn btn-success' %></div>
+  　<div class="col-sm-10 offset-sm-1">
+      <div class="card">
+        <div class="card-header text-center pt-2"><img class="mb-1" src="/assets/exclamation-triangle.svg" alt="image"> まだ物件が登録されていません</div>
+        <div class="card-body">
+          <h5 class="card-title mb-4 text-center">物件を登録するとこんなことができます！</h5>
+            <div class="col-sm-8 offset-sm-2">
+              <ul>
+                <li>担当の不動産会社や連絡先、掲載されているサイトのURLを登録</li>
+                <li>物件の問い合わせ状況や、内見記録など活動ログを残して進捗状況を管理</li>
+                <li>住まい探しにまつわる情報を住まいログで一元管理しましょう！</li>
+              </ul>
+            </div>
+          <div class="text-center"><%= link_to '新規登録', new_property_path, class: 'btn btn-success' %></div>
+        </div>
       </div>
     </div>
   <% end %>
 <% else %>
-<div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+<div class="col-sm-10 offset-sm-1">
+<div class="bg-secondary bg-gradient p-3 p-sm-5 my-4 rounded">
   <div class="text-center text-white">
-    <h2>住まいログへようこそ！</h2>
+    <h2 class="mb-4 font-weight-bold">Welcome to SUMAILOG！</h2>
     <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-log btn-primary' %>
   </div>
+</div>
+<div class="col-sm-10 offset-sm-1 mt-5">
+  <h5 class="text-center">住まい探しに関わる情報は<font size="+3" style="background: linear-gradient(transparent  50%, #ffc037  50%);"> SUMAILOG </font>で一括管理！</h5>
+  <ul class="pt-2">
+    <li class="mt-3">
+      気になっている物件情報を登録して、一括管理！
+      <div>物件金額やアクセスなどはもちろん担当の不動産会社や掲載サイトのURLも登録できます</div>
+    </li>
+    <li class="mt-3">
+      物件ごとに活動ログを残して、進捗を一括管理！
+      <div>問い合わせ状況や内見予定、お部屋の感想や気になるポイントなど、なんでもログに残しましょう</div>
+    </li>
+    <li class="mt-3">
+      住まい探しにおける条件もSUMAILOGで一括管理！
+      <div></div>
+    </li>
+  </ul>
+</div>
 </div>
 <% end %>
